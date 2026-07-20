@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#11131a">
+  <meta name="description" content="Lo stressometro di Gaetano: ogni contributo abbassa il livello di stress.">
+  <title>Stressometro di Gaetano</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js"></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="background-orb orb-one" aria-hidden="true"></div>
+  <div class="background-orb orb-two" aria-hidden="true"></div>
+
+  <main class="page-shell">
+    <header class="hero">
+      <a class="brand" href="./" aria-label="Torna alla pagina principale">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span>Stressometro</span>
+      </a>
+      <span class="live-pill"><span class="live-dot" aria-hidden="true"></span> Aggiornamento live</span>
+    </header>
+
+    <section class="meter-card" aria-labelledby="page-title">
+      <div class="meter-copy">
+        <p class="eyebrow">Livello attuale</p>
+        <h1 id="page-title">Quanto è stressato <span id="owner-name">Gaetano</span>?</h1>
+        <p id="message" class="lead">Situazione sotto osservazione.</p>
+      </div>
+
+      <div class="meter-value-row">
+        <div class="meter-number-wrap">
+          <span id="stress-value" class="meter-number">--</span><span class="meter-unit">%</span>
+        </div>
+        <span id="stress-label" class="stress-label">Caricamento…</span>
+      </div>
+
+      <div class="meter-track" role="progressbar" aria-label="Livello di stress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div id="meter-fill" class="meter-fill"></div>
+        <div class="meter-gloss" aria-hidden="true"></div>
+      </div>
+
+      <div class="meter-scale" aria-hidden="true">
+        <span>Zen</span>
+        <span>Operativo</span>
+        <span>Critico</span>
+      </div>
+
+      <div class="stats-grid">
+        <article class="stat-box">
+          <span class="stat-label">Contributi ricevuti</span>
+          <strong id="total-donated">€0,00</strong>
+        </article>
+        <article class="stat-box">
+          <span class="stat-label">Persone eroiche</span>
+          <strong id="donation-count">0</strong>
+        </article>
+        <article class="stat-box">
+          <span class="stat-label">Stress eliminato</span>
+          <strong id="stress-removed">0%</strong>
+        </article>
+      </div>
+
+      <div class="goal-area">
+        <div class="goal-copy">
+          <span id="goal-copy">€0,00 di €100,00 per riportarlo allo 0%</span>
+          <span id="last-updated">In attesa dei dati…</span>
+        </div>
+        <div class="goal-track" aria-hidden="true"><div id="goal-fill" class="goal-fill"></div></div>
+      </div>
+    </section>
+
+    <section class="donation-card" aria-labelledby="donation-title">
+      <div>
+        <p class="eyebrow">Intervento immediato</p>
+        <h2 id="donation-title">Riduci lo stress</h2>
+        <p class="donation-explanation">
+          Ogni <strong id="ratio-copy">1 €</strong> abbassa il meter di <strong>1 punto</strong>. Il pagamento avviene sulla pagina sicura di Stripe: questo sito non vede né conserva i dati della carta.
+        </p>
+      </div>
+
+      <div class="amount-selector" aria-label="Scegli l'importo">
+        <div id="preset-buttons" class="preset-buttons"></div>
+        <label class="custom-amount">
+          <span>Altro importo</span>
+          <span class="input-wrap">
+            <span aria-hidden="true">€</span>
+            <input id="custom-amount" type="number" inputmode="decimal" min="1" step="0.50" placeholder="15">
+          </span>
+        </label>
+      </div>
+
+      <button id="donate-button" class="donate-button" type="button" disabled>
+        <span id="donate-button-label">Dona con Stripe</span>
+        <span aria-hidden="true">→</span>
+      </button>
+      <p id="payment-status" class="payment-status" role="status" aria-live="polite"></p>
+
+      <div class="trust-row" aria-label="Informazioni sul pagamento">
+        <span>🔒 Checkout Stripe</span>
+        <span>↻ Meter automatico</span>
+        <span>💳 Carte e metodi disponibili</span>
+      </div>
+    </section>
+
+    <section class="how-card" aria-labelledby="how-title">
+      <p class="eyebrow">Come funziona</p>
+      <h2 id="how-title">Zero trucchi, solo matematica</h2>
+      <div class="steps">
+        <article><span>1</span><h3>Scegli l'importo</h3><p>Puoi usare un importo rapido o inserirne uno personalizzato.</p></article>
+        <article><span>2</span><h3>Paga su Stripe</h3><p>I dati di pagamento restano nell'ambiente protetto di Stripe.</p></article>
+        <article><span>3</span><h3>La barra scende</h3><p>Il webhook conferma il pagamento e aggiorna il totale automaticamente.</p></article>
+      </div>
+    </section>
+
+    <footer>
+      <p>Un progetto scientificamente non certificato per salvare la sanità mentale di <span id="footer-owner">Gaetano</span>.</p>
+      <nav aria-label="Link legali">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Condizioni</a>
+      </nav>
+    </footer>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>
