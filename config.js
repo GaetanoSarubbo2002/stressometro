@@ -19,7 +19,7 @@ window.STRESS_CONFIG = {
   maximumDonation: 1000,
 
   // Dopo il deploy Supabase: https://TUO_PROJECT_REF.supabase.co/functions/v1
-  functionsBaseUrl: "",
+  functionsBaseUrl: "https://rlllqvrwbcjpjphashth.supabase.co/functions/v1",
 
   // Metti true solo dopo avere configurato Supabase e Stripe.
   paymentsEnabled: false,
